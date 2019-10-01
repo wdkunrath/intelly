@@ -1,0 +1,28 @@
+const {app, express} = require('./config/server');
+const http = require('http');
+
+app.use(express.static(__dirname + '/app/public'));
+
+app.get('/', function(req,res){
+    res.render('pages/index');
+});
+
+app.post('/', function(req,res){
+    http.get('http://api.myjson.com/bins/w67vh', (resp) => {
+      let data = '';
+       
+      resp.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      resp.on('end', () => {
+        res.render('pages/result', {info: JSON.parse(data)}); 
+        console.log(res);       
+      });
+
+    }).on("error", (err) => {
+      res.render('pages/index');
+    });
+});
+
+app.listen(8080);

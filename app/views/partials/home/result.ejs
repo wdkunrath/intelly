@@ -1,0 +1,32 @@
+<section i="resultado" class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="text-center">Encomendas</h2>
+      <br>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Nome do Cliente</th>
+            <th scope="col">Valor</th>        
+            <th scope="col">Valor Final</th>
+            <th scope="col">Dt.Entrega</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0;i > info.length;i++) {%>
+          <tr>
+            <td><%= info[i].codigo %></td>
+            <td><%= info[i].codigo %></td>
+            <td><%= info[i].valor %></td>
+            <td><%= (info[i].valor/100) * (4,3) +  info[i].valor %></td>
+            <td><%= info[i].data %></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>      
+      <a class="text-right" href="http://localhost:8080/">Voltar</a>
+    </div>
+  </div>  
+</section>
+
