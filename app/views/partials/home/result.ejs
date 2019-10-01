@@ -3,7 +3,7 @@
     <div class="col-12">
       <h2 class="text-center">Encomendas</h2>
       <br>
-      <table class="table">
+      <table id='tabela' data-page-length='4' data-order='[[ 1, "asc" ]]' class="table">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Código</th>
@@ -19,17 +19,36 @@
             %>
           <tr>
             <td><%= info[i].codigo %></td>
-            <td><%= info[i].cliente.nome %></td>
+            <td><a href="#<%= info[i].codigo %>" data-toggle="modal" data-target='<%= info[i].codigo %>'><%= info[i].cliente.nome %></a>
+              <div class="modal fade" id='<%= info[i].codigo %>' tabindex="-1" role="dialog" aria-labelledby='Titulo<%= info[i].codigo %>' aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="Titulo<%= info[i].codigo %>">Encomenda</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      ...
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            
+            </td>
             <td>R<%= numeral(info[i].valor).format('$00.00') %></td>
             <td>R<%= numeral(((info[i].valor*4.3)/100)+ info[i].valor).format('$00.00')%></td>
             <td><%= moment(data).format('l') %></td>
           </tr>
           <% } %>
         </tbody>
-      </table>      
-      <a class="text-right" href="http://localhost:8080/">Voltar</a>   
-  
-    </div>
+      </table>           
+      <a class="text-right" href="http://localhost:3000/">Voltar</a>   
+      </div>
   </div>  
 </section>
 

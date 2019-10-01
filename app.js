@@ -3,7 +3,7 @@ const http = require('http');
 const moment = require('moment');
 const numeral = require('numeral');
 const q = require( 'jquery' );
-const dt = require = require('datatables.net')();
+const dt = require = require('datatables.net');
 
 app.use(express.static(__dirname + '/app/public'));
 
