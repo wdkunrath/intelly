@@ -1,5 +1,9 @@
 const {app, express} = require('./config/server');
 const http = require('http');
+const moment = require('moment');
+const numeral = require('numeral');
+const q = require( 'jquery' );
+const dt = require = require('datatables.net')();
 
 app.use(express.static(__dirname + '/app/public'));
 
@@ -16,7 +20,12 @@ app.post('/', function(req,res){
       });
 
       resp.on('end', () => {
-        res.render('pages/result', {info: JSON.parse(data)['encomendas']});      
+        res.render('pages/result', 
+        {
+          info: JSON.parse(data)['encomendas'],
+          moment: moment,
+          numeral: numeral
+        });      
       });
 
     }).on("error", (err) => {
@@ -24,4 +33,4 @@ app.post('/', function(req,res){
     });
 });
 
-app.listen(8080);
+app.listen(3000);

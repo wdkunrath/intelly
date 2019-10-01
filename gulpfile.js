@@ -25,7 +25,7 @@ gulp.task('browserSync',gulp.series(['nodemon']), function() {
     browserSync.init(null, {
       proxy: "http://localhost:8000",
       files: ["views/**/*.*"],
-      port: 8080,
+      port: 3000,
     });
 });
 

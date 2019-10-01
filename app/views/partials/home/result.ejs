@@ -14,19 +14,23 @@
           </tr>
         </thead>
         <tbody>
-            <% for(var i=0;i < info.length;i++) {%>
+            <% for(var i=0;i < info.length ;i++) {
+              var data = info[i].data;
+            %>
           <tr>
             <td><%= info[i].codigo %></td>
             <td><%= info[i].cliente.nome %></td>
-            <td><%= info[i].valor %></td>
-            <td><%= (info[i].valor/100) * (4,3) +  info[i].valor %></td>
-            <td><%= info[i].data %></td>
+            <td>R<%= numeral(info[i].valor).format('$00.00') %></td>
+            <td>R<%= numeral(((info[i].valor*4.3)/100)+ info[i].valor).format('$00.00')%></td>
+            <td><%= moment(data).format('l') %></td>
           </tr>
           <% } %>
         </tbody>
       </table>      
-      <a class="text-right" href="http://localhost:8080/">Voltar</a>
+      <a class="text-right" href="http://localhost:8080/">Voltar</a>   
+  
     </div>
   </div>  
 </section>
+
 

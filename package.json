@@ -19,9 +19,13 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
+    "datatables.net": "^1.10.20",
+    "datatables.net-dt": "^1.10.20",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "gulp-nodemon": "^2.4.2",
+    "moment": "^2.24.0",
+    "numeral": "^2.0.6",
     "request": "^2.88.0"
   }
 }
