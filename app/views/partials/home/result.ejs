@@ -14,10 +14,10 @@
           </tr>
         </thead>
         <tbody>
-            <% for(var i=0;i > info.length;i++) {%>
+            <% for(var i=0;i < info.length;i++) {%>
           <tr>
             <td><%= info[i].codigo %></td>
-            <td><%= info[i].codigo %></td>
+            <td><%= info[i].cliente.nome %></td>
             <td><%= info[i].valor %></td>
             <td><%= (info[i].valor/100) * (4,3) +  info[i].valor %></td>
             <td><%= info[i].data %></td>

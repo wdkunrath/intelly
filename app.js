@@ -16,8 +16,7 @@ app.post('/', function(req,res){
       });
 
       resp.on('end', () => {
-        res.render('pages/result', {info: JSON.parse(data)}); 
-        console.log(res);       
+        res.render('pages/result', {info: JSON.parse(data)['encomendas']});      
       });
 
     }).on("error", (err) => {
