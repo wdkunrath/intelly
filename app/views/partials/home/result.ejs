@@ -16,32 +16,60 @@
         <tbody>
             <% for(var i=0;i < info.length ;i++) {
               var data = info[i].data;
+              var valor_final = 'R'+numeral(((info[i].valor*4.3)/100)+ info[i].valor).format('$00.00');
             %>
           <tr>
             <td><%= info[i].codigo %></td>
-            <td><a href="#<%= info[i].codigo %>" data-toggle="modal" data-target='<%= info[i].codigo %>'><%= info[i].cliente.nome %></a>
-              <div class="modal fade" id='<%= info[i].codigo %>' tabindex="-1" role="dialog" aria-labelledby='Titulo<%= info[i].codigo %>' aria-hidden="true">
+            <td><a href="#<%= info[i].codigo %>" rel=modal:open><%= info[i].cliente.nome %></a>
+              <div id="<%= info[i].codigo %>" class="modal">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="Titulo<%= info[i].codigo %>">Encomenda</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                      <h5 class="modal-title" id="TituloModalCentralizado">Encomenda <%= info[i].codigo %></h5>
                     </div>
-                    <div class="modal-body">
-                      ...
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    </div>
+                    <div class="modal-body">                                            
+                      <div class="row">
+                        <div class="col">
+                          <p>Codigo ID Encomenda:<strong><%= info[i].id %></strong></p>
+                        </div>    
+                        <div class="col">
+                          <p>Cliente: <strong><%= info[i].cliente.nome %></strong></p>                            
+                        </div>
+                        <div class="col">
+                          <p>Codigo Cliente: <strong><%= info[i].cliente.id %></strong></p>                            
+                        </div>                                               
+                      </div>                     
+                      <div class="row">
+                          <div class="col">
+                            <% 
+                              var Status = info[i].entregue;
+                              if(Status == false){
+                                Status = "Em andamento";
+                              }else{
+                                Status = "Entregue";
+                              }
+                            %>
+                            <p>Status Encomenda:<strong><%= Status %></strong></p>
+                          </div>    
+                          <div class="col">
+                            <p>Data da Encomenda: <strong><%= moment(data).format('l') %></strong></p>                            
+                          </div>                                               
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <p>Valor:<strong> R<%= numeral(info[i].valor).format('$00.00') %></strong></p>
+                        </div>    
+                        <div class="col">
+                          <p>Valor Final: <strong> <%= valor_final %></strong></p>                            
+                        </div>                                               
+                      </div>  
+                    </div>  
                   </div>
-                </div>
-              </div> 
-            
+                </div>                  
+              </div>                         
             </td>
             <td>R<%= numeral(info[i].valor).format('$00.00') %></td>
-            <td>R<%= numeral(((info[i].valor*4.3)/100)+ info[i].valor).format('$00.00')%></td>
+            <td><%= valor_final %></td>
             <td><%= moment(data).format('l') %></td>
           </tr>
           <% } %>
